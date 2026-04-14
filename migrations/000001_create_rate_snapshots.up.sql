@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS schema_migrations (
+    version BIGINT PRIMARY KEY,
+    applied_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE IF NOT EXISTS rate_snapshots (
+    id BIGSERIAL PRIMARY KEY,
+    method TEXT NOT NULL,
+    n INTEGER NOT NULL,
+    m INTEGER,
+    ask NUMERIC NOT NULL,
+    bid NUMERIC NOT NULL,
+    retrieved_at TIMESTAMPTZ NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);

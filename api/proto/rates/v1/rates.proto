@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package rates.v1;
+
+option go_package = "exchange_rate/gen/rates/v1;ratesv1";
+
+import "google/protobuf/timestamp.proto";
+
+service RatesService {
+  rpc GetRates(GetRatesRequest) returns (GetRatesResponse);
+}
+
+enum CalculationMethod {
+  CALCULATION_METHOD_UNSPECIFIED = 0;
+  CALCULATION_METHOD_TOP_N = 1;
+  CALCULATION_METHOD_AVG_N_M = 2;
+}
+
+message GetRatesRequest {
+  CalculationMethod method = 1;
+  uint32 n = 2;
+  uint32 m = 3;
+}
+
+message GetRatesResponse {
+  string ask = 1;
+  string bid = 2;
+  google.protobuf.Timestamp retrieved_at = 3;
+}
