@@ -1,3 +1,7 @@
 .git
 .cache
+<<<<<<< HEAD
 app
+=======
+./app
+>>>>>>> 77a5a6d (Initial commit)
