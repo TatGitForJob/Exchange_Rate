@@ -48,8 +48,11 @@ Service definition is stored in `api/proto/rates/v1/rates.proto`.
 
 Positions are 1-based and the average range is inclusive.
 
-Example `grpcurl` request:
+Example `grpcurl` requests:
 
+```bash
+grpcurl -plaintext -d '{}' localhost:50051 grpc.health.v1.Health/Check
+```
 ```bash
 grpcurl -plaintext -d '{"method":"CALCULATION_METHOD_TOP_N","n":1}' localhost:50051 rates.v1.RatesService/GetRates
 ```
